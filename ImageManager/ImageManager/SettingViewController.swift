@@ -9,8 +9,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    var sortDelegate: SortContentsDelegate?
-    
     private lazy var settingTableView: UITableView = {
         let settingTable = UITableView.init(frame: .zero, style: .grouped)
         settingTable.rowHeight = UITableView.automaticDimension
@@ -35,7 +33,7 @@ class SettingsViewController: UIViewController {
     private func setUpNavigationBar() {
         navigationItem.title = "Settings"
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -54,15 +52,13 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let switchButton = UISwitch()
         switchButton.addTarget(self, action: #selector(pushSwith), for: .valueChanged)
-        let isSort = UserDefaults.standard.bool(forKey: "AZ") == true ||
-        (UserDefaults.standard.object(forKey: "AZ") != nil) == false
         switchButton.tag = indexPath.row
-        switchButton.setOn(isSort, animated: true)
+        switchButton.setOn(true, animated: true)
         
         switch indexPath.row {
         case 0:
             cell.accessoryView = switchButton
-                cell.textLabel?.text = "Sorting from A to Z"
+            cell.textLabel?.text = "Sorting from A to Z"
             return cell
         default:
             cell.textLabel?.text = "Change password"
@@ -72,12 +68,12 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            if indexPath.section == 0 {
-                UserDefaults.standard.set(true, forKey: "ChangePass")
-                LoginInspector.shared.removePassword()
-               openLoginVC()
-            }
+        if indexPath.section == 0 {
+            UserDefaults.standard.set(true, forKey: "ChangePass")
+            LoginInspector.shared.removePassword()
+            openLoginVC()
         }
+    }
     
     @objc func pushSwith(_ sender: UISwitch!){
         if sender.isOn {
@@ -85,12 +81,11 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             UserDefaults.standard.set(false, forKey: "AZ")
         }
-        self.sortDelegate?.sortingAZ()
     }
     
     func openLoginVC() {
-            let loginViewController: LoginViewController = LoginViewController(authMode: .changePassword)
-         navigationController?.present(loginViewController, animated: true, completion: nil)
-        }
+        let loginViewController: LoginViewController = LoginViewController(authMode: .changePassword)
+        navigationController?.present(loginViewController, animated: true, completion: nil)
+    }
 }
 

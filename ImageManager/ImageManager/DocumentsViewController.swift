@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol SortContentsDelegate {
-    func sortingAZ()
-}
-
-class DocumentsViewController: UIViewController, UINavigationControllerDelegate, SortContentsDelegate {
+class DocumentsViewController: UIViewController, UINavigationControllerDelegate {
     
     var fileURL: URL
     var directoryTitle: String
@@ -22,7 +18,12 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
     
     //переменная показывает массив имен документов(файлы, папки)
     var documents: [String] {
-        (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
+       var docs =  (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
+        //сортировка элементов по алфавиту
+        if UserDefaults.standard.bool(forKey: "AZ") {
+            docs.sort()
+        }
+        return docs
     }
     
     init(fileURL: URL, directoryTitle: String) {
@@ -71,20 +72,6 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
         ])
     }
     
-    //сортируем контент по алфавиту
-    internal func sortingAZ() {
-        var documents = self.documents
-        if UserDefaults.standard.bool(forKey: "AZ") == true ||
-            (UserDefaults.standard.object(forKey: "AZ") != nil) == false {
-            documents.sort(by: {$0.lastPathComponent < $1.lastPathComponent})
-            print("sortingAZ")
-        } else {
-            documents.sort(by: {$1.lastPathComponent < $0.lastPathComponent})
-            print("unsortingAZ")
-        }
-        docsTableView.reloadData()
-    }
-    
     //экшн кнопки добавления файла открывает имеджпикер
     @objc private func addFile ( _ : Any) {
         present(imagePicker, animated: true)
@@ -97,7 +84,6 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
                                          message: "Enter folder name") {text in
             let folderPath = self.path + "/" + text
             FileManagerService.shared.createDirectory(folderPath: folderPath)
-            self.sortingAZ()
             self.docsTableView.reloadData()
         }
     }
@@ -108,12 +94,11 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
         setupNavigationBar()
         setupView()
         view.backgroundColor = .white
-        sortingAZ()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //sortingAZ()
+        docsTableView.reloadData()
     }
 }
 
@@ -171,20 +156,8 @@ extension DocumentsViewController: UIImagePickerControllerDelegate {
         self.dismiss(animated: true, completion: nil)
         TextPicker.defaultPicker.getText(showTextPickerIn: self, title: "Save image", message: "Enter file name") { text in
             FileManagerService.shared.createFile(currentDirectory: self.fileURL, fileName: text, image: image)
-            self.sortingAZ()
+            self.docsTableView.reloadData()
             self.dismiss(animated: true, completion: nil)
         }
-    }
-}
-
-extension String {
-    var fileURL: URL {
-        return URL(fileURLWithPath: self)
-    }
-    var pathExtension: String {
-        return fileURL.pathExtension
-    }
-    var lastPathComponent: String {
-        return fileURL.lastPathComponent
     }
 }
