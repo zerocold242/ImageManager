@@ -54,8 +54,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let switchButton = UISwitch()
         switchButton.addTarget(self, action: #selector(pushSwith), for: .valueChanged)
-        let isSort = UserDefaults.standard.bool(forKey: "A - Z") == true ||
-        (UserDefaults.standard.object(forKey: "A - Z") != nil) == false
+        let isSort = UserDefaults.standard.bool(forKey: "AZ") == true ||
+        (UserDefaults.standard.object(forKey: "AZ") != nil) == false
         switchButton.tag = indexPath.row
         switchButton.setOn(isSort, animated: true)
         
@@ -81,21 +81,10 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
     @objc func pushSwith(_ sender: UISwitch!){
         if sender.isOn {
-            UserDefaults.standard.set(true, forKey: "A - Z")
-            print("Sorting  A - Z")
+            UserDefaults.standard.set(true, forKey: "AZ")
         } else {
-            UserDefaults.standard.set(false, forKey: "A - Z")
-            print("Unsorting A - Z")
+            UserDefaults.standard.set(false, forKey: "AZ")
         }
-        //witch sender.tag {
-        //      case 0:
-        //          sender.isOn ? UserDefaults.standard.set(true, forKey: "sort") : UserDefaults.standard.set(false, forKey: "sort")
-        //      case 1:
-        //          sender.isOn ? UserDefaults.standard.set(true, forKey: "size") : UserDefaults.standard.set(false, forKey: "size")
-        //      default:
-        //          print("print")
-        //      }
-               //self.settingTableView.reloadData()
         self.sortDelegate?.sortingAZ()
     }
     

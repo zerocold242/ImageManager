@@ -14,12 +14,16 @@ protocol SortContentsDelegate {
 class DocumentsViewController: UIViewController, UINavigationControllerDelegate, SortContentsDelegate {
     
     var fileURL: URL
-    var contents: [URL] = []
     var directoryTitle: String
     var delegat: FileManagerServiceProtocol?
     
     //переменная показывающая путь к документу
     var path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    
+    //переменная показывает массив имен документов(файлы, папки)
+    var documents: [String] {
+        (try? FileManager.default.contentsOfDirectory(atPath: path)) ?? []
+    }
     
     init(fileURL: URL, directoryTitle: String) {
         self.fileURL = fileURL
@@ -29,16 +33,6 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    //переменная показывает массив имен документов(файлы, папки)
-    var documents: [String]{
-        do {
-            return try FileManager.default.contentsOfDirectory(atPath: path)
-        } catch {
-            print(error)
-        }
-        return []
     }
     
     private lazy var docsTableView: UITableView = {
@@ -79,29 +73,17 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
     
     //сортируем контент по алфавиту
     internal func sortingAZ() {
-        contents = FileManagerService.shared.contentsOfDirectory(currentDirectory: fileURL)
-        if UserDefaults.standard.bool(forKey: "A - Z") == true ||
-            (UserDefaults.standard.object(forKey: "A - Z") != nil) == false {
-            contents.sort(by: {$0.lastPathComponent < $1.lastPathComponent})
+        var documents = self.documents
+        if UserDefaults.standard.bool(forKey: "AZ") == true ||
+            (UserDefaults.standard.object(forKey: "AZ") != nil) == false {
+            documents.sort(by: {$0.lastPathComponent < $1.lastPathComponent})
+            print("sortingAZ")
         } else {
-            contents.sort(by: {$1.lastPathComponent < $0.lastPathComponent})
+            documents.sort(by: {$1.lastPathComponent < $0.lastPathComponent})
+            print("unsortingAZ")
         }
         docsTableView.reloadData()
     }
-    
-    //private func sortingAZ() {
-    //    let isSorted = UserDefaults.standard.object(forKey: "A - Z") as? Bool ?? true
-    //    if isSorted == true {
-    //        contents = FileManagerService.shared.contentsOfDirectory(currentDirectory: fileURL).sorted(by: { (URL1: URL, URL2: URL) -> Bool in
-    //            return URL1.pathComponents.last! < URL2.pathComponents.last!
-    //        })
-    //    } else {
-    //        contents = FileManagerService.shared.contentsOfDirectory(currentDirectory: fileURL).sorted(by: { (URL1: URL, URL2: URL) -> Bool in
-    //            return URL1.pathComponents.last! > URL2.pathComponents.last!
-    //        })
-    //    }
-    //    docsTableView.reloadData()
-    //}
     
     //экшн кнопки добавления файла открывает имеджпикер
     @objc private func addFile ( _ : Any) {
@@ -116,7 +98,7 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
             let folderPath = self.path + "/" + text
             FileManagerService.shared.createDirectory(folderPath: folderPath)
             self.sortingAZ()
-            //self.docsTableView.reloadData()
+            self.docsTableView.reloadData()
         }
     }
     
@@ -126,13 +108,12 @@ class DocumentsViewController: UIViewController, UINavigationControllerDelegate,
         setupNavigationBar()
         setupView()
         view.backgroundColor = .white
-        contents = FileManagerService.shared.contentsOfDirectory(currentDirectory: fileURL)
         sortingAZ()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        sortingAZ()
+        //sortingAZ()
     }
 }
 
@@ -141,8 +122,6 @@ extension DocumentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return documents.count
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -195,5 +174,17 @@ extension DocumentsViewController: UIImagePickerControllerDelegate {
             self.sortingAZ()
             self.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+extension String {
+    var fileURL: URL {
+        return URL(fileURLWithPath: self)
+    }
+    var pathExtension: String {
+        return fileURL.pathExtension
+    }
+    var lastPathComponent: String {
+        return fileURL.lastPathComponent
     }
 }
