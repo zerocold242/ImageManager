@@ -9,19 +9,40 @@
 /* Begin PBXBuildFile section */
 		5CF31FFD29A253F30053D1F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF31FFC29A253F30053D1F5 /* AppDelegate.swift */; };
 		5CF31FFF29A253F30053D1F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF31FFE29A253F30053D1F5 /* SceneDelegate.swift */; };
-		5CF3200129A253F30053D1F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3200029A253F30053D1F5 /* ViewController.swift */; };
+		5CF3200129A253F30053D1F5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3200029A253F30053D1F5 /* LoginViewController.swift */; };
 		5CF3200629A253F50053D1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CF3200529A253F50053D1F5 /* Assets.xcassets */; };
 		5CF3200929A253F50053D1F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF3200729A253F50053D1F5 /* LaunchScreen.storyboard */; };
+		5CF3201229A257850053D1F5 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5CF3201129A257850053D1F5 /* KeychainAccess */; };
+		5CF3201829A258BB0053D1F5 /* WarningAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3201729A258BB0053D1F5 /* WarningAlert.swift */; };
+		5CF3201C29A259150053D1F5 /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3201B29A259150053D1F5 /* TextPicker.swift */; };
+		5CF3201E29A2599C0053D1F5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3201D29A2599C0053D1F5 /* CustomButton.swift */; };
+		5CF3202029A259E70053D1F5 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3201F29A259E70053D1F5 /* CustomTextField.swift */; };
+		5CF3202229A25A220053D1F5 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3202129A25A220053D1F5 /* LoginInspector.swift */; };
+		5CF3202429A25AC60053D1F5 /* DocumentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3202329A25AC60053D1F5 /* DocumentsCoordinator.swift */; };
+		5CF3202629A25B710053D1F5 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3202529A25B710053D1F5 /* DocumentsViewController.swift */; };
+		5CF3202829A25BCD0053D1F5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3202729A25BCD0053D1F5 /* SettingViewController.swift */; };
+		5CF3202A29A25C380053D1F5 /* FileManagerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3202929A25C380053D1F5 /* FileManagerService.swift */; };
+		5CF3202C29A25C830053D1F5 /* FileManagerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF3202B29A25C830053D1F5 /* FileManagerServiceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5CF31FF929A253F30053D1F5 /* ImageManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF31FFC29A253F30053D1F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CF31FFE29A253F30053D1F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5CF3200029A253F30053D1F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5CF3200029A253F30053D1F5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5CF3200529A253F50053D1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CF3200829A253F50053D1F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CF3200A29A253F50053D1F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CF3201729A258BB0053D1F5 /* WarningAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningAlert.swift; sourceTree = "<group>"; };
+		5CF3201B29A259150053D1F5 /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
+		5CF3201D29A2599C0053D1F5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5CF3201F29A259E70053D1F5 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		5CF3202129A25A220053D1F5 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		5CF3202329A25AC60053D1F5 /* DocumentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsCoordinator.swift; sourceTree = "<group>"; };
+		5CF3202529A25B710053D1F5 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		5CF3202729A25BCD0053D1F5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5CF3202929A25C380053D1F5 /* FileManagerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerService.swift; sourceTree = "<group>"; };
+		5CF3202B29A25C830053D1F5 /* FileManagerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerServiceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CF3201229A257850053D1F5 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,14 +76,56 @@
 		5CF31FFB29A253F30053D1F5 /* ImageManager */ = {
 			isa = PBXGroup;
 			children = (
+				5CF3201629A258120053D1F5 /* Authorization */,
+				5CF3201529A257FC0053D1F5 /* ImageManager */,
+				5CF3201429A257DA0053D1F5 /* CustomModels */,
+				5CF3201329A257CB0053D1F5 /* Alerts */,
 				5CF31FFC29A253F30053D1F5 /* AppDelegate.swift */,
 				5CF31FFE29A253F30053D1F5 /* SceneDelegate.swift */,
-				5CF3200029A253F30053D1F5 /* ViewController.swift */,
 				5CF3200529A253F50053D1F5 /* Assets.xcassets */,
 				5CF3200729A253F50053D1F5 /* LaunchScreen.storyboard */,
 				5CF3200A29A253F50053D1F5 /* Info.plist */,
 			);
 			path = ImageManager;
+			sourceTree = "<group>";
+		};
+		5CF3201329A257CB0053D1F5 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				5CF3201729A258BB0053D1F5 /* WarningAlert.swift */,
+				5CF3201B29A259150053D1F5 /* TextPicker.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		5CF3201429A257DA0053D1F5 /* CustomModels */ = {
+			isa = PBXGroup;
+			children = (
+				5CF3201D29A2599C0053D1F5 /* CustomButton.swift */,
+				5CF3201F29A259E70053D1F5 /* CustomTextField.swift */,
+			);
+			path = CustomModels;
+			sourceTree = "<group>";
+		};
+		5CF3201529A257FC0053D1F5 /* ImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				5CF3202329A25AC60053D1F5 /* DocumentsCoordinator.swift */,
+				5CF3202529A25B710053D1F5 /* DocumentsViewController.swift */,
+				5CF3202729A25BCD0053D1F5 /* SettingViewController.swift */,
+				5CF3202929A25C380053D1F5 /* FileManagerService.swift */,
+				5CF3202B29A25C830053D1F5 /* FileManagerServiceProtocol.swift */,
+			);
+			path = ImageManager;
+			sourceTree = "<group>";
+		};
+		5CF3201629A258120053D1F5 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				5CF3200029A253F30053D1F5 /* LoginViewController.swift */,
+				5CF3202129A25A220053D1F5 /* LoginInspector.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,6 +144,9 @@
 			dependencies = (
 			);
 			name = ImageManager;
+			packageProductDependencies = (
+				5CF3201129A257850053D1F5 /* KeychainAccess */,
+			);
 			productName = ImageManager;
 			productReference = 5CF31FF929A253F30053D1F5 /* ImageManager.app */;
 			productType = "com.apple.product-type.application";
@@ -108,6 +175,9 @@
 				Base,
 			);
 			mainGroup = 5CF31FF029A253F30053D1F5;
+			packageReferences = (
+				5CF3201029A257850053D1F5 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 5CF31FFA29A253F30053D1F5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -134,9 +204,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CF3200129A253F30053D1F5 /* ViewController.swift in Sources */,
+				5CF3202029A259E70053D1F5 /* CustomTextField.swift in Sources */,
+				5CF3202829A25BCD0053D1F5 /* SettingViewController.swift in Sources */,
+				5CF3202429A25AC60053D1F5 /* DocumentsCoordinator.swift in Sources */,
+				5CF3200129A253F30053D1F5 /* LoginViewController.swift in Sources */,
+				5CF3201C29A259150053D1F5 /* TextPicker.swift in Sources */,
+				5CF3202C29A25C830053D1F5 /* FileManagerServiceProtocol.swift in Sources */,
+				5CF3201E29A2599C0053D1F5 /* CustomButton.swift in Sources */,
+				5CF3202629A25B710053D1F5 /* DocumentsViewController.swift in Sources */,
 				5CF31FFD29A253F30053D1F5 /* AppDelegate.swift in Sources */,
 				5CF31FFF29A253F30053D1F5 /* SceneDelegate.swift in Sources */,
+				5CF3201829A258BB0053D1F5 /* WarningAlert.swift in Sources */,
+				5CF3202229A25A220053D1F5 /* LoginInspector.swift in Sources */,
+				5CF3202A29A25C380053D1F5 /* FileManagerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +426,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CF3201029A257850053D1F5 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CF3201129A257850053D1F5 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CF3201029A257850053D1F5 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5CF31FF129A253F30053D1F5 /* Project object */;
 }
